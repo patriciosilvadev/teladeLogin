@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+      charset="utf-8"
+    ></script>
+    <script type="text/javascript">
+      function validar() {
+        var senha = cadastro.senha.value;
+        var rep_senha = cadastro.rep_senha.value;
+
+        if (senha == "" || senha.length <= 6) {
+          alert("O campo Senha tem que ter no mínimo 6 caracteres !!");
+          cadastro.senha.focus();
+          return false;
+        }
+        if (senha != rep_senha) {
+          alert("As senhas estão diferentes");
+          cadastro.rep_senha.focus();
+          return false;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <form name="cadastro" action="perfil.html" class="login-form-cadastro">
+      <img src="public/imagens/logo.png" class="img-cadastro" />
+
+      <div class="txtb">
+        <input type="text" name="nome" />
+        <span data-placeholder="Nome"></span>
+      </div>
+
+      <div class="txtb">
+        <input type="text" name="email" />
+        <span data-placeholder="E-mail"></span>
+      </div>
+
+      <div class="txtb">
+        <input type="password" name="senha" />
+        <span data-placeholder="Senha"></span>
+      </div>
+
+      <div class="txtb">
+        <input type="password" name="rep_senha" />
+        <span data-placeholder="Confirmar Senha"></span>
+      </div>
+
+      <input
+        type="submit"
+        class="logbtn"
+        value="CADASTRAR"
+        onclick="return validar()"
+      />
+
+      <div class="buttom-text">
+        Já possui uma conta?<a href="login.html">Login</a>
+      </div>
+    </form>
+
+    <script type="text/javascript">
+      $(".txtb input").on("focus", function() {
+        $(this).addClass("focus");
+      });
+
+      $(".txtb input").on("blur", function() {
+        if ($(this).val() == "") $(this).removeClass("focus");
+      });
+    </script>
+  </body>
+</html>
